@@ -1,0 +1,44 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<title>Details</title>
+</head>
+<body>
+	<?php include 'header.php'; ?>
+	<div id="wrap">
+	<h2>Details</h2>
+	<?php
+		include 'Model/items.php';
+		include 'Helpers/jsonserializer.php';
+		include 'Helpers/connection.php';
+	
+		$client = ConnectionToEventStore::connect();
+		
+		if(isset($_GET["itemkey"])){
+			$json = $client -> get($_GET["itemkey"]);
+			$item = JSONSerializer::serializeFromJSON($json);
+			$image = $item -> image;
+			$title = $item -> title;
+			$desc = $item -> desc;
+			$manufacturer = $item -> manufacturer;
+			$price = $item -> price;
+			$currency = $item -> currency;
+			$shipping = $item -> shipping;
+			echo '<div class="img">
+					  <a href="details.php?itemkey='.$_GET["itemkey"].'">
+					  <img src="'.$image.'" 
+					  		alt="'.$title.'" width="167" height="200">
+					  </a>
+					  <div class="desc">'.$title.'</div>
+					</div><br/>
+					<label>Description:</label>'.$desc.'<br/>
+					<label>Manufacturer:</label>'.$manufacturer.'<br/>
+					<label>Shipping:</label>'.$shipping.'<br/>
+					<label>Price:</label>'.$price.' '.$currency.'<br/>
+					<a href="cart.php?itemkey='.$_GET["itemkey"].'">Add to Cart</a>';
+		}
+	?>
+	</div>
+</body>
+
+</html>
