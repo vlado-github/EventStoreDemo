@@ -20,7 +20,7 @@
 	}else if(isset($_GET["cancelitem"])){
 		if(isset($_SESSION['ordereditems'])){
 			$itemArray = $_SESSION['ordereditems'];
-			EventStoreRepo::saveEvent($itemArray[$_GET["cancelitem"]], time(), "anonymous", EventNames::EventItemCanceled);
+			EventStoreRepo::saveEvent($itemArray[$_GET["cancelitem"]], time(), "anonymous", EventNames::ItemCanceled);
 			unset($itemArray[$_GET["cancelitem"]]);
 			$itemArray = array_values($itemArray);
 			$_SESSION['ordereditems'] = null;

@@ -6,7 +6,7 @@
    <li><a href='additems.php'><span>Add Product</span></a></li>
    <li><a href='cart.php'><span>Cart</span></a></li>
    <li><a href='ordered.php'><span>Ordered</span></a></li>
-   <li class='last'><a href='dashboard.php'><span>Dashboard</span></a></li>
+   <li class='last'><a href='ordered.php'><span>Ordered</span></a></li>
 </ul>
 </div>
 <?php

@@ -17,7 +17,7 @@
 			$itemArray[] = $_GET["itemkey"];
 			$_SESSION['cartitems'] = $itemArray;
 		}	
-		EventStoreRepo::saveEvent($_GET["itemkey"], time(), "anonymous", EventNames::EventItemAddedToCart);		
+		EventStoreRepo::saveEvent($_GET["itemkey"], time(), "anonymous", EventNames::ItemAddedToCart);		
 	}else if(isset($_GET["removeitem"])){
 		if(isset($_SESSION['cartitems'])){
 			$itemArray = $_SESSION['cartitems'];
@@ -26,7 +26,7 @@
 			$_SESSION['cartitems'] = null;
 			$_SESSION['cartitems'] = $itemArray;
 		}
-		EventStoreRepo::saveEvent($_GET["itemkey"], time(), "anonymous", EventNames::EventItemRemovedFromCart);		
+		EventStoreRepo::saveEvent($_GET["itemkey"], time(), "anonymous", EventNames::ItemRemovedFromCart);		
 	}
 	$itemArray = $_SESSION['cartitems'];
 	

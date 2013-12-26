@@ -6,7 +6,7 @@
 	$client = ConnectionToEventStore::connect();
 	
 	$result = $client->keys("item*");
-	//$client -> flushall();
+	$client -> flushall();
 	
 	if(isset($_POST["numOfUsers"])){
 		$numOfUsers = $_POST["numOfUsers"];
